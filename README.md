@@ -1,6 +1,6 @@
 # Bulbul
 
-A plugin for babel to get a traceable log. Life will still be painful but at you'll know where it's hurting.
+A plugin for babel to get a traceable log. Life will still be painful but at least you'll know where it's hurting.
 
 ## Setup
 
