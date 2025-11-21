@@ -192,4 +192,4 @@ MIT © [najmiter](https://github.com/najmiter)
 
 ---
 
-**Made with 💙 for developers who are tired of `console.log` hide and seek**
+**Made with 💜 for developers who are tired of `console.log` hide and seek**
