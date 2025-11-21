@@ -1,0 +1,49 @@
+# .npmignore
+# Exclude development and build files from npm package
+
+# Git files
+.git
+.gitignore
+.gitattributes
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+node_modules/
+
+# Test files
+test/
+tests/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Build files
+dist/
+build/
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+tsconfig.json
+
+# Misc
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,49 @@
+{
+  "name": "@najmiter/bulbul",
+  "version": "1.0.1",
+  "description": "A Babel plugin for traceable logging that automatically injects file path and line number information",
+  "main": "plugins/log.js",
+  "types": "index.d.ts",
+  "keywords": [
+    "babel-plugin",
+    "logging",
+    "debug",
+    "traceable",
+    "console",
+    "development",
+    "debugging"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "npm run build:types",
+    "build:types": "tsc utils/index.ts --declaration --emitDeclarationOnly --outDir . || true"
+  },
+  "files": [
+    "plugins/",
+    "utils/",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/najmiter/bulbul.git"
+  },
+  "bugs": {
+    "url": "https://github.com/najmiter/bulbul/issues"
+  },
+  "homepage": "https://github.com/najmiter/bulbul#readme",
+  "author": "najmiter",
+  "license": "MIT",
+  "peerDependencies": {
+    "@babel/core": "^7.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@types/babel__core": "^7.20.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
