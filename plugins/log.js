@@ -24,7 +24,6 @@ module.exports = function ({ types: t }) {
       CallExpression(path, state) {
         const callee = path.get('callee');
 
-        // Check if this is a Log.traceable() call
         if (
           callee.isMemberExpression() &&
           callee.get('object').isIdentifier({ name: 'Log' }) &&
@@ -32,12 +31,10 @@ module.exports = function ({ types: t }) {
         ) {
           const loc = path.node.loc;
 
-          // Skip if no location information is available
           if (!loc) return;
 
           const args = path.node.arguments;
 
-          // Skip if already transformed (has file path and line number at the end)
           if (
             args.length >= 2 &&
             t.isStringLiteral(args[args.length - 2]) &&
@@ -46,21 +43,17 @@ module.exports = function ({ types: t }) {
             return;
           }
 
-          // Get file information
           const file = state.file.opts.filename || state.filename || 'unknown';
           const line = loc.start.line;
           const cwd = state.cwd || state.opts?.cwd || process.cwd();
 
-          // Calculate relative path from cwd
           let relativeFile;
           try {
             relativeFile = pathModule.relative(cwd, file);
           } catch (error) {
-            // Fallback to absolute path if relative fails
             relativeFile = file;
           }
 
-          // Inject file path and line number as last two arguments
           path.node.arguments.push(t.stringLiteral(relativeFile), t.numericLiteral(line));
         }
       },

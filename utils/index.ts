@@ -29,13 +29,11 @@ export const Log = {
    * // [src/app.js:100] Debug info
    */
   traceable(...args: any[]) {
-    // Handle empty args edge case
     if (args.length === 0) {
       console.log('[unknown]');
       return;
     }
 
-    // Handle single argument edge case
     if (args.length === 1) {
       console.log('[unknown]', args[0]);
       return;
@@ -46,16 +44,14 @@ export const Log = {
 
     let origin = 'unknown';
 
-    // Validate that the last two arguments are file path and line number
     if (typeof file === 'string' && file.length > 0 && typeof line === 'number' && Number.isInteger(line) && line > 0) {
       args.pop(); // remove line
       args.pop(); // remove file
 
-      // Cyan color for file:line info
-      origin = `\x1b[36m${file}:${line}\x1b[0m`;
+      // file name: #615fff & line number: #ff637e
+      origin = `\x1b[38;2;97;95;255m${file}\x1b[0m:\x1b[38;2;255;99;126m${line}\x1b[0m`;
     }
 
-    // Handle case where all args were location info
     if (args.length === 0) {
       console.log(`[${origin}]`);
     } else {
