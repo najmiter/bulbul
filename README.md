@@ -140,6 +140,39 @@ module.exports = {
 > [!WARNING]
 > This plugin is designed for **development use only**. Consider removing it in production builds to avoid exposing file paths and to reduce bundle size.
 
+### Metro / Expo Note
+
+If you see an error like:
+
+```
+Cannot find module '@najmiter/babel-plugin-bulbul'
+If you want to resolve "@najmiter/bulbul", use "module:@najmiter/bulbul"
+```
+
+Metro (used by React Native / Expo) and some Babel resolvers automatically try to resolve plugin names using the `babel-plugin-` prefix. If your project references this package as `@najmiter/bulbul`, Metro may mistakenly look for `@najmiter/babel-plugin-bulbul`.
+
+Two ways to fix this in your consuming project:
+
+- Use the `module:` prefix in your Babel config to force exact module resolution:
+
+```js
+// babel.config.js
+module.exports = {
+  plugins: [
+    [
+      'module:@najmiter/bulbul',
+      {
+        /* optional options */
+      },
+    ],
+  ],
+};
+```
+
+- Or install a package with the `babel-plugin-` prefix (i.e. publish or install `@najmiter/babel-plugin-bulbul`) so the resolver finds it automatically.
+
+Using the `module:` prefix is usually the simplest fix for Metro/Expo projects.
+
 ## Usage with Popular Frameworks
 
 ### React / Next.js

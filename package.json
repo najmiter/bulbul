@@ -1,6 +1,6 @@
 {
   "name": "@najmiter/bulbul",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Babel plugin for traceable logging that automatically injects file path and line number information",
   "main": "plugins/log.js",
   "types": "index.d.ts",
